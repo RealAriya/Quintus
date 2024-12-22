@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from website.models import Contact
-from website.forms import NameForm,Contact_Form
+from website.forms import Contact_Form
 from django.contrib import messages
 
 
