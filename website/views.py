@@ -14,4 +14,17 @@ def about_view(request):
     return render(request,'website/about.html')
 
 
+def contact_view(request):
+    if request.method == 'POST':
+        form = Contact_Form(request.POST)
+        if form.is_valid():
+            form.cleaned_data['first_name'] = 'Unknown'  
+            contact = Contact(**form.cleaned_data)
+            contact.save()
+            messages.add_message(request, messages.SUCCESS, "Your ticket submited successfully.")
+        else:
+             messages.add_message(request, messages.ERROR, "Your ticket didn't submited.")
 
+    form = Contact_Form()
+
+    return render(request,'website/contact.html',{'form':form})
