@@ -30,7 +30,7 @@
 	<link rel='stylesheet' href="{% static 'css/custom.css' %}" />
 
     <!-- Default color: BLUE -->
-    <link rel="stylesheet" href="css/skin-color/skin-default.css" />
+    <link rel="stylesheet" href="{% static 'css/skin-color/skin-default.css' %}" />
 
 
 	<!-- FONTS -->
@@ -232,23 +232,78 @@
 						<div class="menu-01-main-menu-container">
 							<ul id="menu-01-main-menu" class="menu">
 								<li class="menu-item menu-item-home current-menu-item page_item current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor ">
-									<a href="index.html">Home</a>
+									<a href="{% url 'website:index' %}">Home</a>
 								</li>
 								<li class="menu-item">
-									<a href="blog.html">Blog</a>
+									<a href="#">Blog</a>
 								</li>
 								<li class="menu-item">
-									<a href="404.html">404</a>
+									<a href="{% url 'website:about' %}">About</a>
 								</li>
 								<li class="menu-item">
-									<a href="about.html">About</a>
+									<a href="{% url 'website:contact' %}">Contact</a>
 								</li>
 								<li class="menu-item">
-									<a href="contact.html">Contact</a>
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a></a>
+								</li>
+								<li class="menu-item">
+									<a href="#">Sign up</a>
+								</li>
+								<li class="menu-item">
+									<a href="#">Log in</a>
 								</li>
 							</ul>
 						</div>
-						<div class="header-nav-actions">
+						<!-- <div class="header-nav-actions">
+
 							<div id="mt-nav-burger">
 								<span></span>
 								<span></span>
@@ -258,9 +313,9 @@
 								<span></span>
 							</div>
 							<a href="#" class="mt-search-icon">
-								<i class="fa fa-search" aria-hidden="true"></i>
+								<i class="fa fa-search" aria-hidden="true">Log in</i>
 							</a>      
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -370,6 +425,7 @@
 <script type='text/javascript' src="{% static 'js/js_composer_front.min.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/lightbox.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/script-min.js' %}"></script>
+<script type='text/javascript' src="{% static 'js/fontawesome.min.js' %}"></script>
 
 
 </body>
