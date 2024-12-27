@@ -75,8 +75,9 @@
 							</div>
 						</div>
 					</div>
-					<form method="POST" action="php/contact_mail.php" class="container wow fadeInUp animated mt_contact_animated" id="contact01_form" novalidate="novalidate">
+					<form method="post" action="{% url 'website:contact' %}" class="container wow fadeInUp animated mt_contact_animated" id="contact01_form" novalidate="novalidate">
 						<div class="content mt_margin_left_30_negativ mt_margin_right_0 mt_contact_align_center row">
+							{% csrf_token %}
 							<div class="col-md-6 first_set_inputs">
 								<div class="first_name_input">
 									<span class="input input--kohana">
@@ -84,7 +85,7 @@
 											<i class="fa fa-user icon icon--kohana"></i>
 											<span class="input__label-content input__label-content--kohana light-paragraph">First Name</span>
 										</label>
-										<input autocomplete="off" type="text" id="user_first_name" placeholder = 'First-name:' class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="user_first_name">
+										<input autocomplete="off" type="text" id="user_first_name"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'First-name'" class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="first_name">
 									</span>
 								</div>
 								<div class="last_name_input">
@@ -93,7 +94,7 @@
 											<i class="fa fa fa-user icon icon--kohana"></i>
 											<span class="input__label-content input__label-content--kohana light-paragraph">Last Name</span>
 										</label>
-										<input autocomplete="off" type="text" id="user_last_name" placeholder = 'Last-name:' class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="user_last_name">
+										<input autocomplete="off" type="text" id="user_last_name"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last-name'" class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="last_name">
 									</span>
 								</div>
 							</div>
@@ -104,7 +105,7 @@
 											<i class="fa fa-envelope icon icon--kohana"></i>
 											<span class="input__label-content input__label-content--kohana light-paragraph">Email Address</span>
 										</label>
-										<input autocomplete="off" type="email" id="user_email" placeholder = 'Email:' class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="user_email">
+										<input autocomplete="off" type="email" id="user_email"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="email">
 									</span>
 								</div>
 								<div class="subject_input">
@@ -113,7 +114,7 @@
 											<i class="fa fa-pencil-square-o icon icon--kohana"></i>
 											<span class="input__label-content input__label-content--kohana light-paragraph">Subject</span>
 										</label>
-										<input autocomplete="off" type="text" id="user_subject" placeholder = 'Subject:' class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="user_subject">
+										<input autocomplete="off" type="text" id="user_subject"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="subject">
 									</span>
 								</div>
 							</div>
@@ -125,7 +126,7 @@
 											<span class="input__label-content input__label-content--kohana light-paragraph">
 											Message</span>
 										</label>
-										<input autocomplete="off" type="text" id="user_message" placeholder = 'Message:' class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="user_message">
+										<input autocomplete="off" type="text" id="user_message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" class="input__field textarea__field input__field--kohana textarea__field--kohana focus-me" name="message">
 									</span>
 								</div>
 							</div>

@@ -18,7 +18,6 @@ def contact_view(request):
     if request.method == 'POST':
         form = Contact_Form(request.POST)
         if form.is_valid():
-            form.cleaned_data['first_name'] = 'Unknown'  
             contact = Contact(**form.cleaned_data)
             contact.save()
             messages.add_message(request, messages.SUCCESS, "Your ticket submited successfully.")
