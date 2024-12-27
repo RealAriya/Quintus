@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class Category(models.Model):
-    name = models.CharField(max_lenght=255)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
