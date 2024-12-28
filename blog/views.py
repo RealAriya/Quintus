@@ -14,7 +14,7 @@ def blog_home(request,**kwargs):
         posts = posts.filter(category__name=kwargs['cat_name'])
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs['author_username'])
-    posts = Paginator(posts, 2)
+    posts = Paginator(posts, 4)
     try:
         page_number = request.GET.get("page")
         posts = posts.get_page(page_number)
@@ -24,7 +24,7 @@ def blog_home(request,**kwargs):
          posts = posts.get_page(1)
 
     context = {'posts': posts}
-    return render(request,'blog/blog-home.html',context)
+    return render(request,'blog/home.html',context)
 
 def blog_single(request,pid):
     now = timezone.now()
