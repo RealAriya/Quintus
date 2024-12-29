@@ -9,6 +9,7 @@ from django.urls import reverse
 
 def blog_home(request,**kwargs):
     now = timezone.now()
+    postss = Post.objects.filter(status = 1 , published_date__lte=now)[:3]
     posts = Post.objects.filter(status = 1 , published_date__lte=now)
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs['cat_name'])
@@ -23,7 +24,8 @@ def blog_home(request,**kwargs):
     except EmptyPage:
          posts = posts.get_page(1)
 
-    context = {'posts': posts}
+    context = {'posts': posts,
+               'postss': postss}
     return render(request,'blog/home.html',context)
 
 def blog_single(request,pid):

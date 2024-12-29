@@ -25,54 +25,29 @@
                 </div>
 
                 <div class="clearfix"></div>
-				<h2 class="blog_heading heading-bottom high-padding ">Sticky Posts</h2>
+				<h2 class="blog_heading heading-bottom high-padding ">Latest Posts</h2>
 				<div class="row">
+					
 					<div class="container mt_blog_align_sticky_posts">
+						{% for j in postss %}
 						<div class="col-md-4 post">
 						    <div class="sticky_post_text_container">
 						        <a href="https://modeltheme.com/html-templates/quintus/single.html" class="relative">
-					                <img src="{% static 'images/blog_post-1.jpg' %}" class="img-responsive" alt="New Wellhead Design Speeds Up Operations">
+					                <img src="{{ j.image.url }}" class="img-responsive" alt="New Wellhead Design Speeds Up Operations">
 					            </a>
 						        <div class="sticky_post_blog_details">
-						            <a href="https://modeltheme.com/html-templates/quintus/single.html"><h4 class="post-name mt_stick_blog_title">New Wellhead Design Speeds Up Operations</h4></a>
+						            <a href="{% url 'blog:single' pid=j.id %}"><h4 class="post-name mt_stick_blog_title">{{j.title}}</h4></a>
 						            <div class="post-author ">Posted by 
-						            	<a href="#">James Colies</a> - 13 Mar
+						            	<a href="#">{{j.author}}</a> {{j.published_date|date:"d M"}}
 						            </div>
 						        </div>
 						    </div>
 						</div>
-
-						<div class="col-md-4 post">
-						    <div class="sticky_post_text_container">
-						        <a href="https://modeltheme.com/html-templates/quintus/single.html" class="relative">
-					                <img src="{% static 'images/blog_post-17.jpg' %}" class="img-responsive" alt="New Wellhead Design Speeds Up Operations">
-					            </a>
-						        <div class="sticky_post_blog_details">
-						            <a href="#">
-						            	<h4 class="post-name mt_stick_blog_title">Machinery automation: A double edged sword</h4>
-						            </a>
-						            <div class="post-author ">Posted by 
-						            	<a href="#">James Colies</a> - 13 Mar
-						            </div>
-						        </div>
-						    </div>
-						</div>
-
-						<div class="col-md-4 post">
-						    <div class="sticky_post_text_container">
-						        <a href="https://modeltheme.com/html-templates/quintus/single.html" class="relative">
-					                <img src="{% static 'images/blog_post-22.jpg' %}" class="img-responsive" alt="New Wellhead Design Speeds Up Operations">
-					            </a>
-						        <div class="sticky_post_blog_details">
-						            <a href="#"><h4 class="post-name mt_stick_blog_title">Making an Industrial Powerhouse Again</h4></a>
-						            <div class="post-author ">Posted by 
-						            	<a href="#">James Colies</a> - 13 Mar
-						            </div>
-						        </div>
-						    </div>
-						</div>
+						{% endfor %}
 					</div>
-				</div>
+					
+					
+
 
 				<div class="clearfix"></div>
 				<!-- BLOCK: TITLE/SUBTITLE -->
