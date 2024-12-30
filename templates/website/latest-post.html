@@ -1,0 +1,52 @@
+{% load static %}
+
+<!-- SECTION: TESTIMONIALS -->
+<div class="clearfix"></div>
+<div class="row section-light high-padding">
+    <div class="container">
+        <!-- BLOCK: TITLE/SUBTITLE -->
+        <div class="title-subtile-holder">
+            <h1 class="section-title dark_title mt_fond_bold">Latest Posts</h1>
+            <!-- <div class="section-border dark_border"></div> -->
+            <div class="section-subtitle dark_title">
+                <h4>YOU CAN SEE OUR POSTS RIGHT HERE</h4>
+            </div>
+        </div>
+        <!-- BLOCK: TESTIMONIALS -->
+         
+        <div class="testimonials02-container wow fadeInUp testimonials_all_holder">
+            {% for j in posts %}
+            <div class="item flex col-md-12 relative">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 testimonial02-img-holder">
+                        <div class="row data-vc-full-width">
+                            <img class="testimonial02-img" src="{{ j.image.url }}" alt="Mark Binneton">
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 testimonial02-text-holder">
+                        <div class="testimonial02-content">
+                            <div class="testimonial02_text">
+                                <div class="testimonial02_text_content">
+                                    <style>
+                                        .hover-effect:hover {
+                                            color: rgba(245, 118, 0, 0.733);
+                                        }
+                                    </style>
+                                    <a href="{% url 'blog:single' pid=j.id %}" style="color:azure; font-size:18px;">
+                                    <span class="hover-effect">{{ j.content }}</span>
+                                    </a>
+                                </div>
+                                <h4 class="testimonial02_title">{{j.author}}</h4>
+                                {% for cat in j.category.all %}
+                                <h4 class="testimonial02_position">{{cat.name}}</h4>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}                      
+        </div>
+        
+    </div>
+</div>
