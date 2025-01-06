@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register/style.css' %}">
+    <title>signup form</title>
+</head>
+
+<body>
+
+    <div class="signup-page">
+        <form class="form" method="POST" action="{% url 'accounts:signup' %}" novalidate="" autocomplete="off">
+            {% csrf_token %}
+                <div class="logo">
+                    <img src="{% static 'images/logoquintus.png' %}" alt="logo" class="logo-pic">
+                </div>
+
+                <input type="name" type="text" placeholder="name" class="name" name="username" value="" required autofocus onkeydown="nameValidation()" />
+                <span class="name-validation">Must Contain 10 Character (Min)</span>
+
+                <input type="email" placeholder="email" class="email" name="email" value="" required/>
+                <span class="email-validation">This email has already been used</span>
+
+                <input type="password" placeholder="password" class="password" name="password1" required onkeydown="passwordValidation()" />
+                <span class="password-validation">Must Contain 8 Character (Min)</span>
+
+                <input type="password" placeholder="confirm password" class="confirmpassword" name="password2" required/>
+                <span class="confirmpassword-validation">Does not match the entered password</span>
+
+                <button>signup</button>
+                <p class="message">have account? <a href="{% url 'accounts:login' %}">Login here</a></p>
+        </form>
+    </div>  
+
+</body>
+
+</html>

@@ -291,15 +291,22 @@
 								<li class="menu-item">
 									<a></a>
 								</li>
+								
+								{% if request.user.is_authenticated %}
 								<li class="menu-item">
-									<a></a>
+									<p style="color: rgb(255, 102, 0);">Logged in as {{request.user.username}}</p>
 								</li>
 								<li class="menu-item">
-									<a href="#">Sign up</a>
+									<a href="{% url 'accounts:logout' %}">Log out</a>
+								</li>
+								{% else %}
+								<li class="menu-item">
+									<a href="{% url 'accounts:signup' %}">Sign up</a>
 								</li>
 								<li class="menu-item">
-									<a href="#">Log in</a>
+									<a href="{% url 'accounts:login' %}">Log in</a>
 								</li>
+								{% endif %}
 							</ul>
 						</div>
 						<!-- <div class="header-nav-actions">
@@ -320,6 +327,31 @@
 				</div>
 			</div>
 		</nav>
+		<style>
+			.popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
+			.popup-content { position: relative; margin: 15% auto; padding: 20px; width: 80%; max-width: 600px; background: white; border-radius: 5px; }
+			.popup-close { position: absolute; top: 10px; right: 20px; cursor: pointer; }
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const popup = document.getElementById('popup');
+				const closeBtn = document.querySelector('.popup-close');
+	
+				if (popup.querySelector('.messages li')) {
+					popup.style.display = 'block';
+				}
+	
+				closeBtn.addEventListener('click', function() {
+					popup.style.display = 'none';
+				});
+	
+				window.addEventListener('click', function(event) {
+					if (event.target == popup) {
+						popup.style.display = 'none';
+					}
+				});
+			});
+		</script>
 	</header>
 
     {% block content %}{% endblock %}

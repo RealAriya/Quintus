@@ -1,11 +1,170 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <P>Single page</P>
-</body>
-</html>
+<html lang="zxx" class="no-js">
+	<head>
+
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="shortcut icon" href="img/fav.png">
+
+		<meta name="author" content="colorlib">
+
+		<meta name="description" content>
+
+		<meta name="keywords" content>
+
+		<meta charset="UTF-8">
+
+		<title>Quintus</title>
+		<link
+			href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+			rel="stylesheet">
+
+			
+		<!-- single -->
+		<link rel="stylesheet" href="{% static 'css/single/linearicons.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/jquery-ui.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/nice-select.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/main.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/single/owl.carousel.css' %}">
+				
+	</head>
+
+			<!-- start banner Area -->
+			<section class="relative about-banner" style="background-color:#0c0c0c;">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								{{posts.title}}				
+							</h1>	
+							<p class="text-white link-nav"><a href="{% url 'website:index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blog:home' %}">Blog </a> <span class="lnr lnr-arrow-right"></span></p>
+						</div>	
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->		
+	<body>
+		<section class="post-content-area single-post-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 posts-list bg-black">
+						<div class="single-post row">
+							<div class="col-lg-12">
+								<div class="feature-img">
+									<img class="img-fluid" src="{{posts.image.url}}" alt>
+								</div>
+							</div>
+							<div class="col-lg-3  col-md-3 meta-details">
+								<ul class="tags">
+									{% for category in posts.category.all %}
+									<li><a href="#" class="w-color">{{category.name}},</a></li>
+									{% endfor %}
+								</ul>
+								<div class="user-details row">
+									<p class="user-name col-lg-12 col-md-12 col-6"><a href="#"
+											class="w-color">{{posts.author.get_full_name}}</a> <span class="lnr lnr-user"></span></p>
+									<p class="date col-lg-12 col-md-12 col-6"><a href="#"
+											class="w-color">{{posts.published_date|date:"d/M/Y"}}</a> <span
+											class="lnr lnr-calendar-full"></span></p>
+									<p class="view col-lg-12 col-md-12 col-6"><a href="#"
+											class="w-color">{{posts.counted_view}} Views</a> <span class="lnr lnr-eye"></span></p>
+									
+									<ul class="social-links col-lg-12 col-md-12 col-6">
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-github"></i></a></li>
+										<li><a href="#"><i class="fa fa-behance"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-9 col-md-9">
+								<h3 class="mt-20 mb-20">{{posts.title}}</h3>
+								<p class="excert">
+									{{posts.content|safe}}
+								</p>							
+							</div>
+							
+						</div>
+						<div class="navigation-area">
+							<div class="row">
+								<div
+									class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+									{% if pre_post %}
+									<div class="thumb">
+										<a href="{% url 'blog:single' pre_post.id %}"><img class="img-fluid" src="{{ pre_post.image.url }}" width="100" height="100" alt></a>
+									</div>
+									<div class="arrow">
+										<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+									</div>
+									<div class="detials">
+										<p>Prev Post</p>
+										<a href="{% url 'blog:single' pre_post.id %}"><h4>{{pre_post.title}}</h4></a>
+										{% endif %}
+									</div>
+								</div>
+								<div
+									class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+									<div class="detials">
+										{% if next_post %}
+										<p>Next Post</p>
+										<a href="{% url 'blog:single' next_post.id %}"><h4>{{next_post.title}}</h4></a>
+									</div>
+									<div class="arrow">
+										<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+									</div>
+									<div class="thumb">
+										<a href="{% url 'blog:single' next_post.id %}"><img class="img-fluid" src="{{ next_post.image.url }}" width="100" height="100" alt></a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-lg-4 sidebar-widgets color">
+						<div class="widget-wrap">
+
+							{% include 'blog/search.html '%}
+
+							{% include 'blog/latest-post.html '%}
+
+							{% include 'blog/categories.html '%}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<script src="{% static 'js/single/vendor/jquery-2.2.4.min.js' %}"></script>
+		<script src="{% static 'js/single/popper.min.js' %}"></script>
+		<script src="{% static 'js/single/vendor/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/single/jquery-ui.js' %}"></script>
+		<script src="{% static 'js/single/easing.min.js' %}"></script>
+		<script src="{% static 'js/single/hoverIntent.js' %}"></script>
+		<script src="{% static 'js/single/superfish.min.js' %}"></script>
+		<script src="{% static 'js/single/jquery.ajaxchimp.min.js' %}"></script>
+		<script src="{% static 'js/single/jquery.magnific-popup.min.js' %}"></script>
+		<script src="{% static 'js/single/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'js/single/owl.carousel.min.js' %}"></script>
+		<script src="{% static 'js/single/mail-script.js' %}"></script>
+		<script src="{% static 'js/single/main.js' %}"></script> 
+
+		<script async
+			src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+		<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+	</body>
+
+
