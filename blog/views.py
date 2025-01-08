@@ -41,7 +41,8 @@ def blog_single(request,pid):
         else:
             messages.add_message(request, messages.ERROR, "Your comment didn't send.")
     
-    postss = Post.objects.filter(status = 1 , published_date__lte=now).order_by('-published_date')
+    postss = Post.objects.filter(status = 1 , published_date__lte=now)
+    sorted_postss = postss.order_by('-published_date')
     posts = get_object_or_404(postss, id=pid)
     
     comments = Comment.objects.filter(post=posts.id,approved=1).order_by('created_date')
@@ -65,6 +66,7 @@ def blog_single(request,pid):
         'comments': comments,
         'form': form,
         'categories': categories,
+        'sorted_postss':sorted_postss,
         }
                
     return render(request,'blog/single.html',context)

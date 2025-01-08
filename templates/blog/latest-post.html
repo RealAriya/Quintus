@@ -3,7 +3,7 @@
 <div class="single-sidebar-widget popular-post-widget">
     <h4 class="popular-title">Latest Posts</h4>
     <div class="popular-post-list">
-        {% for j in postss %}
+        {% for j in sorted_postss %}
         <div class="single-post-list d-flex flex-row align-items-center" style="display: flex; align-items: center; margin-bottom: 15px;">
             <div class="thumb"  style="flex-shrink: 0; width: 120px; height: 70px; overflow: hidden;">
                 <img class="img-fluid" src="{{ j.image.url }}" style="width: 100%; height: 100%; object-fit: cover;" alt>

@@ -102,15 +102,40 @@
 						</div>
 						<div class="navigation-area">
 							<div class="row">
-								<div
+								<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+									<div class="thumb">
+										{% if pre_post %}
+										<a href="{% url 'blog:single' pre_post.id %}"><img class="img-fluid" src="{{ pre_post.image.url }}" width="100" height="100" alt=""></a>
+										
+									</div>
+									
+									<div class="detials">
+										
+										<p>Prev Post</p>											
+										<a href="{% url 'blog:single' pre_post.id %}"><h4 style="font-size: 14px; margin-top: -5px;">{{pre_post.title}}</h4></a>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+									<div class="detials">
+										{% if next_post %}
+										<p>Next Post</p>											
+										<a href="{% url 'blog:single' next_post.id %}"><h4 style="font-size: 14px; margin-top: -5px;">{{next_post.title}}</h4></a>
+										
+									</div>
+									
+									<div class="thumb">
+										<a href="{% url 'blog:single' next_post.id %}"><img class="img-fluid" src="{{ next_post.image.url }}" width="100" height="100" alt=""></a>
+										{% endif %}
+									</div>										
+								</div>	
+								<!-- <div
 									class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 									{% if pre_post %}
 									<div class="thumb">
 										<a href="{% url 'blog:single' pre_post.id %}"><img class="img-fluid" src="{{ pre_post.image.url }}" width="100" height="100" alt></a>
 									</div>
-									<div class="arrow">
-										<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-									</div>
+									
 									<div class="detials">
 										<p>Prev Post</p>
 										<a href="{% url 'blog:single' pre_post.id %}"><h4>{{pre_post.title}}</h4></a>
@@ -124,14 +149,12 @@
 										<p>Next Post</p>
 										<a href="{% url 'blog:single' next_post.id %}"><h4>{{next_post.title}}</h4></a>
 									</div>
-									<div class="arrow">
-										<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-									</div>
+									
 									<div class="thumb">
 										<a href="{% url 'blog:single' next_post.id %}"><img class="img-fluid" src="{{ next_post.image.url }}" width="100" height="100" alt></a>
 										{% endif %}
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div>
