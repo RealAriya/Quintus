@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.humanize',
+    'django_extensions',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -42,6 +45,8 @@ INSTALLED_APPS = [
     'blog',
     'accounts',
 ]
+
+SITE_ID = 2
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

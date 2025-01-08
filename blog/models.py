@@ -36,8 +36,15 @@ class Post(models.Model):
             self.save()
         return self
     
-    # def get_absolute_url(self):
-    #     return reverse('blog:single',kwargs={'pid':self.id})
+    
+    def snippest(self):
+        return self.content[:100] + '...'
+    
+    
+    def get_absolute_url(self):
+        return reverse('blog:single',kwargs={'pid':self.id})
+    
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
