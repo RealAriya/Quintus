@@ -46,9 +46,31 @@ INSTALLED_APPS = [
     'website',
     'blog',
     'accounts',
+    'compressor',
+
 ]
 
+
+# django-compressor setup
+
+COMPRESS_OFFLINE = True
+
+STATICFILES_FINDERS = [ 'django.contrib.staticfiles.finders.FileSystemFinder',
+                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                        'compressor.finders.CompressorFinder',
+ ] 
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = [ 'compressor.filters.css_default.CssAbsoluteFilter',
+                        'compressor.filters.cssmin.CSSMinFilter',
+ ]
+
+COMPRESS_JS_FILTERS = [ 'compressor.filters.jsmin.JSMinFilter', ]
+
+
 SITE_ID = 2
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

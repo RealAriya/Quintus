@@ -1,4 +1,5 @@
 {% load static %}
+{% load static compress %}
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -9,6 +10,7 @@
     <title>Quintus - Industry / Factory / Engineering HTML5 Template</title>
 
 	<!-- CSS -->
+	{% compress css %}
 	<link rel='stylesheet' href="{% static 'css/mt-custom.css' %}" />
 	<link rel='stylesheet' href="{% static 'css/font-awesome.min.css' %}"  />
 	<link rel='stylesheet' href="{% static 'css/simple-line-icons.css' %}"  />
@@ -28,7 +30,7 @@
 	<link rel='stylesheet' href="{% static 'css/js_composer.css' %}" />
 	<link rel='stylesheet' href="{% static 'css/animate.min.css' %}" />
 	<link rel='stylesheet' href="{% static 'css/custom.css' %}" />
-
+	{% endcompress %}
     <!-- Default color: BLUE -->
     <link rel="stylesheet" href="{% static 'css/skin-color/skin-default.css' %}" />
 
@@ -420,6 +422,7 @@
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src="{% static 'js/jquery.js' %}"></script>
+{% compress js %}
 <script type='text/javascript' src="{% static 'js/jquery.form.min.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/modernizr.custom.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/classie.js' %}"></script>
@@ -434,7 +437,7 @@
 <script type='text/javascript' src="{% static 'js/lightbox.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/script-min.js' %}"></script>
 <script type='text/javascript' src="{% static 'js/fontawesome.min.js' %}"></script>
-
+{% endcompress %}
 
 </body>
 </html>
