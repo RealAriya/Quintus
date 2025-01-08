@@ -11,7 +11,7 @@ from django.db.models import Q
 
 def blog_home(request,**kwargs):
     now = timezone.now()
-    postss = Post.objects.filter(status = 1 , published_date__lte=now)[:3]
+    postss = Post.objects.filter(status = 1 , published_date__lte=now).order_by('-published_date')[:3]
     posts = Post.objects.filter(status = 1 , published_date__lte=now)
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs['cat_name'])
