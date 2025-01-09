@@ -55,12 +55,13 @@ INSTALLED_APPS = [
 
 COMPRESS_OFFLINE = True
 
-STATICFILES_FINDERS = [ 'django.contrib.staticfiles.finders.FileSystemFinder',
-                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-                        'compressor.finders.CompressorFinder',
- ] 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 
 COMPRESS_CSS_FILTERS = [ 'compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter',
