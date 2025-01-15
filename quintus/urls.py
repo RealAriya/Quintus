@@ -8,6 +8,7 @@ from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from django.conf.urls import handler404, handler403, handler400, handler500
 from . import error_views
+from blog import views
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -29,7 +30,7 @@ urlpatterns = [
         name="django.contrib.sitemaps.views.sitemap",
     ),
 
-    path('robots.txt', include('robots.urls')),
+    path('robots.txt', views.robots_txt),
 ]
 
 

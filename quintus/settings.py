@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG",cast=bool,default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -70,7 +70,7 @@ COMPRESS_CSS_FILTERS = [ 'compressor.filters.css_default.CssAbsoluteFilter',
 COMPRESS_JS_FILTERS = [ 'compressor.filters.jsmin.JSMinFilter', ]
 
 
-SITE_ID = 2
+SITE_ID = 3
 
 
 MIDDLEWARE = [

@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import HttpResponse
+from django.template import loader
 
 def blog_home(request,**kwargs):
     now = timezone.now()
@@ -88,5 +90,17 @@ def blog_category(request,cat_name):
     posts = posts.filter(category__name=cat_name)
     context = {'posts': posts}
     return render(request,'blog/home.html',context)
+
+
+
+
+def robots_txt(request):
+    template = loader.get_template('robots.txt')
+    context = {
+        'request': request,
+    }
+    return HttpResponse(template.render(context), content_type='text/plain')
+
+
 
 
